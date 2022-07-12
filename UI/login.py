@@ -26,11 +26,14 @@ class Login(QWidget):
 
                         UI.signBox.SignBox("{}님 환영합니다.".format(self.privacy_chunk[i][2]))
                         break
+
                     else:      # 비밀번호 다를때
                         UI.signBox.SignBox("비밀번호가 다릅니다.")
                         break
+
                 elif j == len(self.privacy_chunk) and self.ID_Qline.text() != self.privacy_chunk[i][0]:  # dict 에 id가 없을때
                     UI.signBox.SignBox("회원정보가 없습니다.")
                     break
+
         else:  # id, pw에 빈칸이 있을때
             UI.signBox.SignBox("빈칸 없이 다시 입력 하세요.")
