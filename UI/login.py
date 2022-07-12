@@ -15,14 +15,14 @@ class Login(QWidget):
         self.privacy_chunk = [self.privacy_list[i * 3:(i + 1) * 3] for i in
                               range((len(self.privacy_list) + 3 - 1) // 3)]
 
-        if self.ID_Qline.text() != '' and self.PW_Qline.text() != '':   # Id Pw 빈칸이 없을때
+        if self.edt_Id.text() != '' and self.edt_Pw.text() != '':   # Id Pw 빈칸이 없을때
             j = 0
             for i in range(len(self.privacy_chunk)):
                 j += 1
 
-                if self.ID_Qline.text() == self.privacy_chunk[i][0]:  # id가 있을떄
+                if self.edt_Id.text() == self.privacy_chunk[i][0]:  # id가 있을떄
 
-                    if self.privacy_chunk[i][1] == self.PW_Qline.text():    # 비밀번호도 같을때
+                    if self.privacy_chunk[i][1] == self.edt_Pw.text():    # 비밀번호도 같을때
 
                         UI.signBox.SignBox("{}님 환영합니다.".format(self.privacy_chunk[i][2]))
                         break
