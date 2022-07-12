@@ -17,7 +17,7 @@ from PySide2.QtWidgets import QApplication, QWidget, QMessageBox, QLineEdit, QLa
 # 모달 모달 리스 이해 하기
 
 
-class MyApp(QWidget):
+class All(QWidget):
     privacy = ()
     privacy_list = []
     privacy_chunk = []
@@ -28,24 +28,24 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-        ID_QLabel = QLabel("ID", self)
-        ID_QLabel.move(20, 35)
-        PW_QLabel = QLabel("PW", self)
-        PW_QLabel.move(20, 65)
+        label_Id = QLabel("ID", self)
+        label_Id.move(20, 35)
+        label_Pw = QLabel("PW", self)
+        label_Pw.move(20, 65)
 
-        self.ID_Qline = QLineEdit(self)
-        self.ID_Qline.move(60, 30)
+        self.edt_Id = QLineEdit(self)
+        self.edt_Id.move(60, 30)
 
-        self.PW_Qline = QLineEdit(self)
-        self.PW_Qline.move(60, 60)
+        self.edt_Pw = QLineEdit(self)
+        self.edt_Pw.move(60, 60)
 
-        Login_BT = QPushButton('Login', self)
-        Login_BT.setGeometry(220, 30, 50, 50)
-        Login_BT.clicked.connect(self.Login_Event)  # 로그인 messagebox
+        btn_Login = QPushButton('Login', self)
+        btn_Login.setGeometry(220, 30, 50, 50)
+        btn_Login.clicked.connect(self.Login_Event)  # 로그인 messagebox
 
-        Sign_Up_BT = QPushButton('Sign up', self)
-        Sign_Up_BT.move(20, 90)
-        Sign_Up_BT.clicked.connect(self.dialog_open)  # 회원가입 dialog 출력
+        btn_SignUp = QPushButton('Sign up', self)
+        btn_SignUp.move(20, 90)
+        btn_SignUp.clicked.connect(self.dialog_open)  # 회원가입 dialog 출력
 
         self.setWindowTitle('QLineEdit')
         self.setGeometry(300, 300, 300, 200)
@@ -54,20 +54,20 @@ class MyApp(QWidget):
     def Login_Event(self):  # 로그인 이벤트
         txt = open("C:\woodonghun/id", 'r')  # 로그인 눌렀을 때 회원정보 가지고 옴
         self.privacy = txt.read()
+        self.privacy = self.privacy.replace('\n', ',')
         self.privacy_list = self.privacy.split(',')
-
         self.privacy_chunk = [self.privacy_list[i * 3:(i + 1) * 3] for i in
                               range((len(self.privacy_list) + 3 - 1) // 3)]
-        print(self.privacy_chunk)
-        if self.ID_Qline.text() != '' and self.PW_Qline.text() != '':   # Id Pw 빈칸이 없을때
+
+        if self.edt_Id.text() != '' and self.edt_Pw.text() != '':   # Id Pw 빈칸이 없을때
             j = 0
             for i in range(len(self.privacy_chunk)):
                 j += 1
 
-                if self.ID_Qline.text() == self.privacy_chunk[i][0]:  # id가 있을떄
+                if self.edt_Id.text() == self.privacy_chunk[i][0]:  # id가 있을떄
                     print(self.privacy_chunk[i][0])
 
-                    if self.privacy_chunk[i][1] == self.PW_Qline.text():    # 비밀번호도 같을때
+                    if self.privacy_chunk[i][1] == self.edt_Pw.text():    # 비밀번호도 같을때
                         self.signbox("{}님 환영합니다.".format(self.privacy_chunk[i][2]))
                         break
 
@@ -92,45 +92,45 @@ class MyApp(QWidget):
         signBox.exec_()
 
     def dialog_open(self):  # 회원가입 dialog 사용
-        ok = QPushButton('ok', self.dialog)
-        ok.move(20, 120)
-        ok.clicked.connect(self.signup)  # OK 버튼 눌렀을 때 회원가입
+        btn_Ok = QPushButton('ok', self.dialog)
+        btn_Ok.move(20, 120)
+        btn_Ok.clicked.connect(self.signup)  # OK 버튼 눌렀을 때 회원가입
 
-        cancel = QPushButton('cancel', self.dialog)
-        cancel.move(100, 120)
-        cancel.clicked.connect(self.dialog_close)
+        btn_Cancel = QPushButton('cancel', self.dialog)
+        btn_Cancel.move(100, 120)
+        btn_Cancel.clicked.connect(self.dialog_close)
 
-        ID_dialog_Label = QLabel("ID", self.dialog)
-        ID_dialog_Label.move(20, 35)
-        PW_dialog_Label = QLabel("PW", self.dialog)
-        PW_dialog_Label.move(20, 65)
-        name_dialog_Label = QLabel("name", self.dialog)
-        name_dialog_Label.move(20, 95)
+        label_Id_Dialog = QLabel("ID", self.dialog)
+        label_Id_Dialog.move(20, 35)
+        label_Pw_Dialog = QLabel("PW", self.dialog)
+        label_Pw_Dialog.move(20, 65)
+        label_Name_Dialog = QLabel("name", self.dialog)
+        label_Name_Dialog.move(20, 95)
 
-        self.ID_dialog_line = QLineEdit(self.dialog)
-        self.ID_dialog_line.move(60, 30)
+        self.edt_Id_Dialog = QLineEdit(self.dialog)
+        self.edt_Id_Dialog.move(60, 30)
 
-        self.PW_dialog_line = QLineEdit(self.dialog)
-        self.PW_dialog_line.move(60, 60)
+        self.edt_Pw_Dialog = QLineEdit(self.dialog)
+        self.edt_Pw_Dialog.move(60, 60)
 
-        self.name_dialog_line = QLineEdit(self.dialog)
-        self.name_dialog_line.move(60, 90)
+        self.edt_Name_Dialog = QLineEdit(self.dialog)
+        self.edt_Name_Dialog.move(60, 90)
 
         self.dialog.exec()  # show 대신 exec 를 사용 하면 modal 로 동작
 
     def signup(self):  # 회원가입 OK 클릭
         txt = open("C:\woodonghun/id", 'r')  # 첫 화면 에서 txt 에 저장된 회원 정보 읽음
         self.privacy = txt.read()
+        self.privacy = self.privacy.replace('\n', ',')
         self.privacy_list = self.privacy.split(',')
-
         self.privacy_chunk = [self.privacy_list[i * 3:(i + 1) * 3] for i in
                               range((len(self.privacy_list) + 3 - 1) // 3)]
 
         # 리스트 분할 https://jsikim1.tistory.com/141 참고
 
-        Id = self.ID_dialog_line.text()
-        pw = self.PW_dialog_line.text()
-        name = self.name_dialog_line.text()
+        Id = self.edt_Id_Dialog.text()
+        pw = self.edt_Pw_Dialog.text()
+        name = self.edt_Name_Dialog.text()
 
         if Id != '' and pw != '' and name != '':  # 빈칸 없이 입력 했을떄
             j = 0
@@ -142,8 +142,8 @@ class MyApp(QWidget):
 
             if j == len(self.privacy_chunk):    # for문에서 id중복을 찾지 못하였을때 j와 len 의 값을 비교해서 if문 들어감
                 self.privacy = Id, pw, name
-                txt = open("/id", 'a')
-                txt.write(','.join(self.privacy)+',')  # txt 에 dict 로 id, pw, name 저장
+                txt = open("C:\woodonghun/id", 'a')
+                txt.write(','.join(self.privacy)+'\n')  # txt 에 dict 로 id, pw, name 저장
                 self.signbox('회원 가입이 완료 되었습니다.')
                 self.dialog.close()
 
@@ -156,5 +156,5 @@ class MyApp(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = MyApp()
+    ex = All()
     sys.exit(app.exec_())
