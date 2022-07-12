@@ -48,9 +48,9 @@ class DlgSign(QWidget):
         self.privacy_chunk = [self.privacy_list[i * 3:(i + 1) * 3] for i in range((len(self.privacy_list) + 3 - 1) // 3)]
         # 리스트 분할 https://jsikim1.tistory.com/141 참고
 
-        Id = self.ID_dialog_line.text()
-        pw = self.PW_dialog_line.text()
-        name = self.name_dialog_line.text()
+        Id = self.edt_Id_Dialog.text()
+        pw = self.edt_Pw_Dialog.text()
+        name = self.edt_Name_Dialog.text()
 
         if Id != '' and pw != '' and name != '':  # 빈칸 없이 입력 했을떄
             j = 0
