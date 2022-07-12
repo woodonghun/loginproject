@@ -35,11 +35,11 @@ class MyApp(QWidget):
         label_pw = QLabel("PW", self)
         label_pw.move(20, 65)
 
-        self.ID_Qline = QLineEdit(self)
-        self.ID_Qline.move(60, 30)
+        self.edt_Id = QLineEdit(self)
+        self.edt_Id.move(60, 30)
 
-        self.PW_Qline = QLineEdit(self)
-        self.PW_Qline.move(60, 60)
+        self.edt_Pw = QLineEdit(self)
+        self.edt_Pw.move(60, 60)
 
         btn_login = QPushButton('Login', self)
         btn_login.setGeometry(220, 30, 50, 50)
