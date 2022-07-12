@@ -60,7 +60,7 @@ class DlgSign(QWidget):
                     UI.signBox.SignBox('중복 되는 id 입니다 다시 입력 하세요.')
                     break
 
-            if j == len(self.privacy_chunk):
+            if j == len(self.privacy_chunk):    # for문에서 id중복을 찾지 못하였을때 j와 len 의 값을 비교해서 if문 들어감
                 self.privacy = Id, pw, name
                 txt = open("C:\woodonghun/id", 'a')
                 txt.write(','.join(self.privacy))
