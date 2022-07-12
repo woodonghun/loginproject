@@ -38,7 +38,7 @@ class DlgSign(QWidget):
         self.edt_Name_Dialog = QLineEdit(self.dialog)
         self.edt_Name_Dialog.move(60, 90)
 
-        self.dialog.exec()  # show 대신 exec 를 사용 하면 modal 로 동작
+        self.dialog.exec()  ####### show 대신 exec 를 사용 하면 modal 로 동작 #######
 
     def signup(self):  # 회원가입 OK 클릭
         txt = open("C:\woodonghun/id", 'r')  # 첫 화면 에서 txt 에 저장된 회원 정보 읽음
