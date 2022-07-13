@@ -28,7 +28,7 @@ class MyApp(QWidget):
         self.initUi()
 
     def initUi(self):
-        sign = UI.dlgSign.DlgSign
+        dlg_sign = UI.dlgSign.DlgSign
 
         label_id = QLabel("ID", self)
         label_id.move(20, 35)
@@ -47,7 +47,7 @@ class MyApp(QWidget):
 
         btn_signup = QPushButton('Sign up', self)
         btn_signup.move(20, 90)
-        btn_signup.clicked.connect(sign)  # 회원가입 dialog 출력
+        btn_signup.clicked.connect(dlg_sign)  # 회원가입 dialog 출력
 
         self.setWindowTitle('QLineEdit')
         self.setGeometry(300, 300, 300, 200)

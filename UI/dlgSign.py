@@ -41,6 +41,7 @@ class DlgSign(QWidget):
         self.dialog.exec()  ####### show 대신 exec 를 사용 하면 modal 로 동작 #######
 
     def signup(self):  # 회원가입 OK 클릭
+        MsgBox = UI.signBox.SignBox
         txt = open("C:\woodonghun/id", 'r')  # 첫 화면 에서 txt 에 저장된 회원 정보 읽음
         self.privacy = txt.read()
         self.privacy = self.privacy.replace('\n', ',')
@@ -57,7 +58,7 @@ class DlgSign(QWidget):
             for i in range(len(self.privacy_chunk)):
                 j += 1
                 if Id == self.privacy_chunk[i][0]:  # id 중복 되었을 때
-                    UI.signBox.SignBox('중복 되는 id 입니다 다시 입력 하세요.')
+                    MsgBox('중복 되는 id 입니다 다시 입력 하세요.')
                     break
 
             if j == len(self.privacy_chunk):    # for문에서 id중복을 찾지 못하였을때 j와 len 의 값을 비교해서 if문 들어감
@@ -65,11 +66,11 @@ class DlgSign(QWidget):
                 txt = open("C:\woodonghun/id", 'a')
                 txt.write(','.join(self.privacy))
                 txt.write("\n")
-                UI.signBox.SignBox('회원 가입이 완료 되었습니다.')
+                MsgBox('회원 가입이 완료 되었습니다.')
                 self.dialog_close()
 
         elif Id != '' or pw != '' or name != '':  # 하나 라도 빈칸 있을때
-            UI.signBox.SignBox('빈칸 없이 다시 입력 하세요.')
+            MsgBox('빈칸 없이 다시 입력 하세요.')
 
     def dialog_close(self):
         self.dialog.close()

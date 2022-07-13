@@ -8,6 +8,7 @@ import UI.signBox
 
 class Login(QWidget):
     def Login_Event(self):  # 로그인 이벤트
+        MsgBox = UI.signBox.SignBox
         txt = open("C:\woodonghun/id", 'r')  # 로그인 눌렀을 때 회원정보 가지고 옴
         self.privacy = txt.read()
         self.privacy = self.privacy.replace('\n', ',')
@@ -24,16 +25,16 @@ class Login(QWidget):
 
                     if self.privacy_chunk[i][1] == self.edt_Pw.text():    # 비밀번호도 같을때
 
-                        UI.signBox.SignBox("{}님 환영합니다.".format(self.privacy_chunk[i][2]))
+                        MsgBox("{}님 환영합니다.".format(self.privacy_chunk[i][2]))
                         break
 
                     else:      # 비밀번호 다를때
-                        UI.signBox.SignBox("비밀번호가 다릅니다.")
+                        MsgBox("비밀번호가 다릅니다.")
                         break
 
                 elif j == len(self.privacy_chunk) and self.ID_Qline.text() != self.privacy_chunk[i][0]:  # dict 에 id가 없을때
-                    UI.signBox.SignBox("회원정보가 없습니다.")
+                    MsgBox("회원정보가 없습니다.")
                     break
 
         else:  # id, pw에 빈칸이 있을때
-            UI.signBox.SignBox("빈칸 없이 다시 입력 하세요.")
+            MsgBox("빈칸 없이 다시 입력 하세요.")
