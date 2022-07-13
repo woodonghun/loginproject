@@ -47,6 +47,7 @@ class DlgSign(QWidget):
         self.privacy = self.privacy.replace('\n', ',')
         self.privacy_list = self.privacy.split(',')
         self.privacy_chunk = [self.privacy_list[i * 3:(i + 1) * 3] for i in range((len(self.privacy_list) + 3 - 1) // 3)]
+        # 리스트 분할을 하지 말고 \n 스플릿 -- , 스플릿 두번을 하여 따로 분리를 하지 않도록 한다.
         # 리스트 분할 https://jsikim1.tistory.com/141 참고
 
         Id = self.edt_id_dialog.text()
