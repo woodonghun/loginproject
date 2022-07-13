@@ -32,7 +32,7 @@ class Login(QWidget):
                         MsgBox("비밀번호가 다릅니다.")
                         break
 
-                elif j == len(self.privacy_chunk) and self.ID_Qline.text() != self.privacy_chunk[i][0]:  # dict 에 id가 없을때
+                elif j == len(self.privacy_chunk) and self.edt_Id.text() != self.privacy_chunk[i][0]:  # dict 에 id가 없을때
                     MsgBox("회원정보가 없습니다.")
                     break
 
