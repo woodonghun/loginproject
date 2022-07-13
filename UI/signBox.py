@@ -1,4 +1,4 @@
-# 메세지박스
+# 메세지 박스
 
 from PySide2.QtWidgets import QMessageBox
 

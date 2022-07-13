@@ -1,4 +1,4 @@
-#회원가입 다이얼로그
+# 회원가입 다이얼로그
 
 from PySide2.QtWidgets import QPushButton, QLabel, QLineEdit, QDialog, QWidget
 
@@ -69,7 +69,7 @@ class DlgSign(QWidget):
                 MsgBox('회원 가입이 완료 되었습니다.')
                 self.dialog_close()
 
-        else :  # 하나 라도 빈칸 있을때
+        else:  # 하나 라도 빈칸 있을때
             MsgBox('빈칸 없이 다시 입력 하세요.')
 
     def dialog_close(self):
