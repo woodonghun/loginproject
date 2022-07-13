@@ -28,24 +28,24 @@ class All(QWidget):
         self.initUI()
 
     def initUI(self):
-        label_Id = QLabel("ID", self)
-        label_Id.move(20, 35)
-        label_Pw = QLabel("PW", self)
-        label_Pw.move(20, 65)
+        label_id = QLabel("ID", self)
+        label_id.move(20, 35)
+        label_pw = QLabel("PW", self)
+        label_pw.move(20, 65)
 
-        self.edt_Id = QLineEdit(self)
-        self.edt_Id.move(60, 30)
+        self.edt_id = QLineEdit(self)
+        self.edt_id.move(60, 30)
 
-        self.edt_Pw = QLineEdit(self)
-        self.edt_Pw.move(60, 60)
+        self.edt_pw = QLineEdit(self)
+        self.edt_pw.move(60, 60)
 
-        btn_Login = QPushButton('Login', self)
-        btn_Login.setGeometry(220, 30, 50, 50)
-        btn_Login.clicked.connect(self.Login_Event)  # 로그인 messagebox
+        btn_login = QPushButton('Login', self)
+        btn_login.setGeometry(220, 30, 50, 50)
+        btn_login.clicked.connect(self.Login_Event)  # 로그인 messagebox
 
-        btn_SignUp = QPushButton('Sign up', self)
-        btn_SignUp.move(20, 90)
-        btn_SignUp.clicked.connect(self.dialog_open)  # 회원가입 dialog 출력
+        btn_signUp = QPushButton('Sign up', self)
+        btn_signUp.move(20, 90)
+        btn_signUp.clicked.connect(self.dialog_open)  # 회원가입 dialog 출력
 
         self.setWindowTitle('QLineEdit')
         self.setGeometry(300, 300, 300, 200)
@@ -59,15 +59,14 @@ class All(QWidget):
         self.privacy_chunk = [self.privacy_list[i * 3:(i + 1) * 3] for i in
                               range((len(self.privacy_list) + 3 - 1) // 3)]
 
-        if self.edt_Id.text() != '' and self.edt_Pw.text() != '':   # Id Pw 빈칸이 없을때
+        if self.edt_id.text() != '' and self.edt_pw.text() != '':   # Id Pw 빈칸이 없을때
             j = 0
             for i in range(len(self.privacy_chunk)):
                 j += 1
 
-                if self.edt_Id.text() == self.privacy_chunk[i][0]:  # id가 있을떄
-                    print(self.privacy_chunk[i][0])
+                if self.edt_id.text() == self.privacy_chunk[i][0]:  # id가 있을떄
 
-                    if self.privacy_chunk[i][1] == self.edt_Pw.text():    # 비밀번호도 같을때
+                    if self.privacy_chunk[i][1] == self.edt_pw.text():    # 비밀번호도 같을때
                         self.signbox("{}님 환영합니다.".format(self.privacy_chunk[i][2]))
                         break
 
@@ -107,14 +106,14 @@ class All(QWidget):
         label_Name_Dialog = QLabel("name", self.dialog)
         label_Name_Dialog.move(20, 95)
 
-        self.edt_Id_Dialog = QLineEdit(self.dialog)
-        self.edt_Id_Dialog.move(60, 30)
+        self.edt_id_dialog = QLineEdit(self.dialog)
+        self.edt_id_dialog.move(60, 30)
 
-        self.edt_Pw_Dialog = QLineEdit(self.dialog)
-        self.edt_Pw_Dialog.move(60, 60)
+        self.edt_pw_dialog = QLineEdit(self.dialog)
+        self.edt_pw_dialog.move(60, 60)
 
-        self.edt_Name_Dialog = QLineEdit(self.dialog)
-        self.edt_Name_Dialog.move(60, 90)
+        self.edt_name_dialog = QLineEdit(self.dialog)
+        self.edt_name_dialog.move(60, 90)
 
         self.dialog.exec()  # show 대신 exec 를 사용 하면 modal 로 동작
 
@@ -128,9 +127,9 @@ class All(QWidget):
 
         # 리스트 분할 https://jsikim1.tistory.com/141 참고
 
-        Id = self.edt_Id_Dialog.text()
-        pw = self.edt_Pw_Dialog.text()
-        name = self.edt_Name_Dialog.text()
+        Id = self.edt_id_dialog.text()
+        pw = self.edt_pw_dialog.text()
+        name = self.edt_name_dialog.text()
 
         if Id != '' and pw != '' and name != '':  # 빈칸 없이 입력 했을떄
             j = 0
