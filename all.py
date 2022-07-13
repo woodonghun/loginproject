@@ -13,7 +13,7 @@ from PySide2.QtWidgets import QApplication, QWidget, QMessageBox, QLineEdit, QLa
 
 # pickle lib 를 이용 해서 객체를 저장하여 끄고 다시 켜도 id가 존재함
 # main과 dialog 클래스 나누기 패키지?? 모듈로 이용??
-# 다른 라이브러리 사용하지 않고 id 등록을 읽고 쓰기로 구성해보기
+# 다른 라이브러리 (피클,csv) 사용하지 않고 id 등록을 읽고 쓰기로 구성해보기
 # 모달 모달 리스 이해 하기
 # 총 실습 기간 3일 22/7/8 ~ 22/7/11
 
